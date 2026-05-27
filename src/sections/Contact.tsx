@@ -10,9 +10,9 @@ import { Send, Mail, MapPin, Phone, CheckCircle, XCircle } from 'lucide-react';
 //    Template variables used: {{from_name}}, {{from_email}}, {{message}}
 // 4. Go to Account → copy your Public Key
 // 5. Paste all three below (or put in .env as VITE_EMAILJS_*)
-const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'service_50401ya';
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_ez3crkp';
-const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'LtTXXQ7dlj875nJHD';
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 async function sendViaEmailJS(data: { name: string; email: string; message: string }) {
   const now = new Date().toLocaleString('en-IN', {
