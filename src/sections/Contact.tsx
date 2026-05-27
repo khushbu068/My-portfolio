@@ -3,16 +3,9 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { Send, Mail, MapPin, Phone, CheckCircle, XCircle } from 'lucide-react';
 
-// ─── EmailJS — no backend needed ─────────────────────────────────────────────
-// 1. Sign up free at https://www.emailjs.com
-// 2. Create a Service (Gmail) → copy Service ID
-// 3. Create an Email Template → copy Template ID
-//    Template variables used: {{from_name}}, {{from_email}}, {{message}}
-// 4. Go to Account → copy your Public Key
-// 5. Paste all three below (or put in .env as VITE_EMAILJS_*)
-const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID ;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID  = 'service_50401ya';
+const EMAILJS_TEMPLATE_ID = 'template_ez3crkp';
+const EMAILJS_PUBLIC_KEY  = 'LtTXXQ7dlj875nJHD';
 
 async function sendViaEmailJS(data: { name: string; email: string; message: string }) {
   const now = new Date().toLocaleString('en-IN', {
@@ -44,7 +37,6 @@ async function sendViaEmailJS(data: { name: string; email: string; message: stri
   }
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 const Contact: React.FC = () => {
   const { ref, isInView } = useInView();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -67,11 +59,7 @@ const Contact: React.FC = () => {
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err: any) {
       setStatus('error');
-      setErrorMsg(
-        EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID'
-          ? 'EmailJS not configured yet — add your keys (see comment at top of Contact.tsx).'
-          : 'Failed to send. Please try again or email me directly.'
-      );
+      setErrorMsg('Failed to send. Please try again or email me directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -122,7 +110,6 @@ const Contact: React.FC = () => {
       ref={ref}
       className="relative py-24 px-4 md:px-8 max-w-6xl mx-auto"
     >
-      {/* ── Heading ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -142,7 +129,6 @@ const Contact: React.FC = () => {
 
       <div className="grid md:grid-cols-2 gap-10 items-start">
 
-        {/* ── Left: contact info + socials ── */}
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -158,7 +144,6 @@ const Contact: React.FC = () => {
             </p>
           </div>
 
-          {/* Contact cards */}
           <div className="space-y-3">
             {contactInfo.map((info, idx) => {
               const Icon = info.icon;
@@ -185,7 +170,6 @@ const Contact: React.FC = () => {
             })}
           </div>
 
-          {/* Social links */}
           <div>
             <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-3">
               Find me on
@@ -208,7 +192,6 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Availability badge */}
           <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -220,7 +203,6 @@ const Contact: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* ── Right: contact form ── */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -232,7 +214,6 @@ const Contact: React.FC = () => {
           >
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Send a message</h3>
 
-            {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
                 Your Name
@@ -249,7 +230,6 @@ const Contact: React.FC = () => {
               />
             </div>
 
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
                 Email Address
@@ -266,7 +246,6 @@ const Contact: React.FC = () => {
               />
             </div>
 
-            {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
                 Message
@@ -283,7 +262,6 @@ const Contact: React.FC = () => {
               />
             </div>
 
-            {/* Status messages */}
             {status === 'success' && (
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
@@ -305,7 +283,6 @@ const Contact: React.FC = () => {
               </motion.div>
             )}
 
-            {/* Submit */}
             <motion.button
               whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(56,189,248,0.35)' }}
               whileTap={{ scale: 0.97 }}
