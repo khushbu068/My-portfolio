@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import { ExternalLink, Github } from 'lucide-react';
+import proj2 from "../assets/proj1.png"
+import proj1 from "../assets/proj2.png"
 
 const Projects: React.FC = () => {
   const { ref, isInView } = useInView();
@@ -13,7 +15,7 @@ const Projects: React.FC = () => {
       title: 'Dev-Tinder',
       description: 'Full-stack MERN chat and networking platform with real-time messaging using Socket.IO',
       category: 'fullstack',
-      image: 'https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=500&h=300&fit=crop',
+      image: proj1,
       technologies: [
         'React.js',
         'Node.js',
@@ -32,7 +34,7 @@ const Projects: React.FC = () => {
         'Responsive design',
       ],
       links: {
-        github: 'https://github.com/khushbu-chacholiya',
+        github: 'https://github.com/khushbu068/Dev-tinder#',
       },
     },
     {
@@ -40,7 +42,7 @@ const Projects: React.FC = () => {
       title: 'Config-Driven Food Ordering App',
       description: 'Responsive food ordering application with Firebase integration and dynamic UI configuration',
       category: 'frontend',
-      image: 'https://images.unsplash.com/photo-1585521537230-24454d92e807?w=500&h=300&fit=crop',
+      image: proj2,
       technologies: ['React.js', 'Firebase', 'Tailwind CSS', 'Redux', 'Axios'],
       features: [
         'Config-driven UI components',
@@ -51,7 +53,7 @@ const Projects: React.FC = () => {
         'Search & filtering',
       ],
       links: {
-        github: 'https://github.com/khushbu-chacholiya',
+        github: 'https://github.com/khushidhakad114/React/tree/khushboo',
       },
     },
     {
@@ -71,7 +73,7 @@ const Projects: React.FC = () => {
       ],
       links: {
         live: '#',
-        github: 'https://github.com/khushbu-chacholiya',
+        github: 'https://github.com/khushbu068/My-portfolio',
       },
     },
   ];
