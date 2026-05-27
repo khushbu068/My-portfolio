@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Navigation from './components/Navigation';
 import FloatingShapes from './components/FloatingShapes';
+import Loader from './components/Loader';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Skills from './sections/Skills';
@@ -9,20 +11,28 @@ import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
-    <div className="bg-white dark:bg-neutral-950 text-gray-900 dark:text-white overflow-x-hidden">
-      <FloatingShapes />
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+
+      {!loading && (
+        <div className="bg-white dark:bg-neutral-950 text-gray-900 dark:text-white overflow-x-hidden">
+          <FloatingShapes />
+          <Navigation />
+          <main>
+            <Hero />
+            <About />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 
